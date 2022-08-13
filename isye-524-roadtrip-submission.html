@@ -14588,14 +14588,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </li>
 <li><a href="#2.-Mathematical-Model">Mathematical Model</a><ol>
 <li><a href="#a.-Traveling-Salesman-Variant">Traveling Salesman Variant</a></li>
-<li><a href="#b.-Adapative-Subtour-Elimination-Model">Adaptive Subtour Elimination Model</a></li>
+<li><a href="#b.-Adaptive-Subtour-Elimination-Model">Adaptive Subtour Elimination Model</a></li>
 <li><a href="#c.-Miller-Tucker-Zemlin-Model">Miller-Tucker-Zemlin Model</a></li>
 </ol>
 </li>
 <li><a href="#3.-Solution">Solution</a><ol>
 <li><a href="#a.-Data-and-Parameter-Definition">Data and Parameter Definition</a></li>
 <li><a href="#b.-Modeling">Modeling</a><ol>
-<li><a href="#Adapative-Subtour-Elimination-Method">Adaptive Subtour Elimination Method</a></li>
+<li><a href="#Traveling-Salesman-Method">Traveling Salesman Method</a></li>
+<li><a href="#Adaptive-Subtour-Elimination-Method">Adaptive Subtour Elimination Method</a></li>
 <li><a href="#Miller-Tucker-Zemlin-Method">Miller-Tucker-Zemlin Method</a></li>
 </ol>
 </li>
@@ -14782,7 +14783,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="b.-Adapative-Subtour-Elimination-Model">b. Adapative Subtour Elimination Model<a class="anchor-link" href="#b.-Adapative-Subtour-Elimination-Model">&#182;</a></h3><hr>
+<h3 id="b.-Adaptive-Subtour-Elimination-Model">b. Adaptive Subtour Elimination Model<a class="anchor-link" href="#b.-Adaptive-Subtour-Elimination-Model">&#182;</a></h3><hr>
 <p>This model utilizes iteration and eliminates any present subtours for the following run until a unified path is achieved.</p>
 
 </div>
@@ -15419,7 +15420,7 @@ Academic license - for non-commercial use only - expires 2023-07-13
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Adapative-Subtour-Elimination-Method">Adapative Subtour Elimination Method<a class="anchor-link" href="#Adapative-Subtour-Elimination-Method">&#182;</a></h4><p>This helps eliminate subtours by adapting part of the TSP model but with only the set of nodes selected by the first optimal solution (that may include subtours). This limits subtour constraints by not forcing the model to visit all points.</p>
+<h4 id="Adaptive-Subtour-Elimination-Method">Adaptive Subtour Elimination Method<a class="anchor-link" href="#Adaptive-Subtour-Elimination-Method">&#182;</a></h4><p>This helps eliminate subtours by adapting part of the TSP model but with only the set of nodes selected by the first optimal solution (that may include subtours). This limits subtour constraints by not forcing the model to visit all points.</p>
 <p>First, we'll define helper functions that aid in eliminating subtours.</p>
 
 </div>
@@ -16093,7 +16094,7 @@ Total Trip Duration: 7.098 days
 <li>Don't have a budget (e.g. a trip under \$600)</li>
 </ul>
 <p>As the length of stay is recommended from the National Parks' website, it may vary person-to-person; this, like most factors involved in planning a trip, is heavily dependent on the human factors / personal preference side of things that a more objective mathematical model may not currently account for. However, the data can be modified by the individual/(s) in question, after which re-running the same model would provide a viable solution for the set of individuals in question.</p>
-<p>Similarly, the lodging costs are also derived from a collection of sources and don’t account for the ability to choose multiple sources of accommodation, e.g., camping, hotels, AirBNBs, staying with friends, etc. Such costs are also seasonal and change based on demand and the personalized pricing strategy of any online source used; thus, these are only an assumed average cost of lodging in the area.</p>
+<p>Similarly, the lodging costs are also derived from a collection of sources and don’t account for the ability to choose multiple sources of accommodation, e.g., camping, hotels, Airbnbs, staying with friends, etc. Such costs are also seasonal and change based on demand and the personalized pricing strategy of any online source used; thus, these are only an assumed average cost of lodging in the area.</p>
 <p>Furthermore, our gas cost is an average of the cost of the state we are traveling from to the state that the park is located in; this doesn’t account for gas costs in states between the parks in question. For example, if we travel from Wisconsin to Indiana, crossing Illinois, our average gas cost excludes the gas cost in Illinois. Should we refuel in Illinois, the total gas cost would probably vary from what our model has predicted. While this likely wouldn’t change the overall objective (the total trip cost) too much, it still introduces variation and affects the robustness of our model.</p>
 <p>Lastly, we also don’t include food cost which, while being significant on any trip, is also likely to be stable across trips and scale with the number of days traveling. Even considering the assumptions we’ve made we still believe this is a useful tool in calculating a ballpark estimate of the minimum cost of such a road trip.</p>
 
@@ -16129,7 +16130,7 @@ Total Trip Duration: 7.098 days
 <li>Visting a specific number of parks <code>@constraint(m, parks_visited, sum(x) == YOUR_SPECIFIC_NUM_PARKS)</code></li>
 </ul>
 <p>where each variable with the prefix <code>YOUR</code> allows personal preference to be included in the model</p>
-<p>In searching for national parks around the United States, our team had to exclude parks in Alaska, Hawaii, and certain island locations due to complexities in getting to said locations. In order to make our model all-encompassing, we could alter our model to include multiple methods of transport. For example, getting to Isle Royale in Michigan, requires either a private plane or a boat. If we break down the cost arc from UW-Madison to Isle Royale to include driving to Houghton County Airport, taking a shuttle to the boat boarding location, and taking the boat to Isle Royale, we can reformulate the $c_{UW-Madison, Isle Royale}$ arc to the following</p>
+<p>In searching for national parks around the United States, our team had to exclude parks in Alaska, Hawaii, and certain island locations due to complexities in getting to said locations. In order to make our model all-encompassing, we could alter our model to include multiple methods of transport. For example, getting to Isle Royale in Michigan requires either a private plane or a boat. If we break down the cost arc from UW-Madison to Isle Royale to include driving to Houghton County Airport, taking a shuttle to the boat boarding location, and taking the boat to Isle Royale, we can reformulate the $c_{UW-Madison, Isle Royale}$ arc to the following</p>
 <p>$c_{UW-Madison, Isle Royale} = c_{UW-Madison, Houghton County Memorial Airport} + c_{Houghton County Memorial Airport, Shuttle} + c_{Shuttle, Boat Start} + c_{Boat Boarding, Isle Royale}$</p>
 <p>This would then break down the cost of getting from one location to another to include multiple modes of transport. Thus, including other modes of transport as separate constituent arcs could help aid the practicality of this model.</p>
 
